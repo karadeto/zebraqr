@@ -5,7 +5,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 import Header from '../components/Header'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { AuthProvider } from '../lib/auth-context'
-import { isDevtoolsEnabled } from '../lib/env'
+import { getSupabaseEnv, isDevtoolsEnabled } from '../lib/env'
 
 import appCss from '../styles.css?url'
 
@@ -75,6 +75,10 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   const showDevtools = isDevtoolsEnabled()
+  const { SUPABASE_URL, SUPABASE_ANON_KEY } = getSupabaseEnv()
+  const publicConfigScript = `window.__PUBLIC_CONFIG__ = window.__PUBLIC_CONFIG__ || { SUPABASE_URL: ${JSON.stringify(
+    SUPABASE_URL || '',
+  )}, SUPABASE_ANON_KEY: ${JSON.stringify(SUPABASE_ANON_KEY || '')} };`
   return (
     <html lang="en">
       <head>
@@ -85,6 +89,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Header />
           <ErrorBoundary>{children}</ErrorBoundary>
         </AuthProvider>
+        <script dangerouslySetInnerHTML={{ __html: publicConfigScript }} />
         {showDevtools && (
           <TanStackDevtools
             config={{ position: 'bottom-left' }}

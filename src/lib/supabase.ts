@@ -2,20 +2,11 @@ import { createClient } from '@supabase/supabase-js'
 import { getSupabaseEnv } from './env'
 import type { Session, SupabaseClient, User } from '@supabase/supabase-js'
 
-const { SUPABASE_URL, SUPABASE_ANON_KEY } = getSupabaseEnv()
-
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  // Provide an early, helpful error in dev environments
-
-  console.warn(
-    '[supabase] Missing env. Expected VITE_SUPABASE_URL/VITE_SUPABASE_ANON_KEY (or SUPABASE_URL/SUPABASE_ANON_KEY on server).',
-  )
-}
-
 let _client: SupabaseClient | null = null
 
 export function getSupabase(): SupabaseClient {
   if (_client) return _client
+  const { SUPABASE_URL, SUPABASE_ANON_KEY } = getSupabaseEnv()
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
     throw new Error('Supabase env vars are not set. Check your .env values.')
   }
