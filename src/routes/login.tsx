@@ -10,7 +10,7 @@ export const Route = createFileRoute('/login')({
     const url = `${origin}/login`
     return {
       meta: [
-        { title: 'Login | Zebra QR' },
+        { title: 'Login | ZebraQR' },
         { name: 'robots', content: 'noindex,follow' },
       ],
       links: [{ rel: 'canonical', href: url }],

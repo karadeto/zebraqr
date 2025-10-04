@@ -10,7 +10,7 @@ export const Route = createFileRoute('/register')({
     const url = `${origin}/register`
     return {
       meta: [
-        { title: 'Register | Zebra QR' },
+        { title: 'Register | ZebraQR' },
         { name: 'robots', content: 'noindex,follow' },
       ],
       links: [{ rel: 'canonical', href: url }],
