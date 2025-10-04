@@ -1,0 +1,24 @@
+# qr-code-app Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2025-10-03
+
+## Active Technologies
+- TypeScript (Node.js) + TanStack Start (full-stack React framework), Supabase (auth [EXTRACTED FROM ALL PLAN.MD FILES] database), Prisma (ORM), QR code generation library (001-we-want-to)
+
+## Project Structure
+```
+src/
+tests/
+```
+
+## Commands
+npm test [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNOLOGIES] npm run lint
+
+## Code Style
+TypeScript (Node.js): Follow standard conventions
+
+## Recent Changes
+- 001-we-want-to: Added TypeScript (Node.js) + TanStack Start (full-stack React framework), Supabase (auth [LAST 3 FEATURES AND WHAT THEY ADDED] database), Prisma (ORM), QR code generation library
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->

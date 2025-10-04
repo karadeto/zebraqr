@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tanstack-start-app",
+  "compatibility_date": "2025-09-02",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/react-start/server-entry",
+  "vars": {
+    "SUPABASE_URL": "https://gtovdghrydtyoecmbxnc.supabase.co",
+    "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0b3ZkZ2hyeWR0eW9lY21ieG5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkzOTQzNTUsImV4cCI6MjA3NDk3MDM1NX0.y1UtjLpJ44C0prAcFP39q4ABIRBCfiGS6s__wQyIa7Y",
+  },
+}
