@@ -21,9 +21,20 @@ function viteEnv<T extends string = string>(key: T): string | undefined {
 }
 
 export function getSupabaseEnv() {
-  const url = viteEnv('VITE_SUPABASE_URL') || process.env.SUPABASE_URL
+  // Try Vite (browser/SSR), then Node env (local dev), then global (CF Workers vars with potential shims)
+  const g: any = (typeof globalThis !== 'undefined' ? globalThis : {}) as any
+  const url =
+    viteEnv('VITE_SUPABASE_URL') ||
+    (process?.env?.VITE_SUPABASE_URL as any) ||
+    (process?.env?.SUPABASE_URL as any) ||
+    g?.VITE_SUPABASE_URL ||
+    g?.SUPABASE_URL
   const anon =
-    viteEnv('VITE_SUPABASE_ANON_KEY') || process.env.SUPABASE_ANON_KEY
+    viteEnv('VITE_SUPABASE_ANON_KEY') ||
+    (process?.env?.VITE_SUPABASE_ANON_KEY as any) ||
+    (process?.env?.SUPABASE_ANON_KEY as any) ||
+    g?.VITE_SUPABASE_ANON_KEY ||
+    g?.SUPABASE_ANON_KEY
   return { SUPABASE_URL: url, SUPABASE_ANON_KEY: anon }
 }
 
